@@ -1,11 +1,19 @@
+/*
+ * @Author: Ankit Agnihotri 
+ * @Date: 2019-08-08 12:43:26 
+ * @Last Modified by:   Ankit Agnihotri 
+ * @Last Modified time: 2019-08-08 12:43:26 
+ */
+
 import React from "react";
+import Aux from "./../../hoc/Aux";
 import classes from "./Cockpit.css";
 
 const cockpit = props => {
   const assignedClasses = [];
-  let btnClass = "";
+  let btnClass = classes.Button;
   if (props.showPersons) {
-    btnClass = classes.red;
+    btnClass = [classes.Button, classes.Red].join(" ");
   }
 
   if (props.persons.length <= 2) {
@@ -16,13 +24,14 @@ const cockpit = props => {
   }
 
   return (
-    <div className={classes.Cockpit}>
-      <h1>React App</h1>
+    <Aux>
+      <h1>{props.appTitle}</h1>
       <p className={assignedClasses.join(" ")}>working.....</p>
       <button className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
-    </div>
+      <button onClick={props.login}>Log In </button>
+    </Aux>
   );
 };
 
